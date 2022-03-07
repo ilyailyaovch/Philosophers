@@ -6,7 +6,7 @@
 /*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:02:14 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/06 16:50:04 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/07 10:57:42 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,4 @@ int	ft_check_args(int argc, char **argv)
 		return(printf(RED"Wrong input data\n"WTH) && false);
 		
 	return (true);
-}
-
-void	ft_data_init(int argc, char **argv, t_data *data)
-{
-	data->num = ft_atoi(argv[1]);
-	data->input.die_time = ft_atoi(argv[2]);
-	data->input.eat_time = ft_atoi(argv[3]);
-	data->input.sleep_time = ft_atoi(argv[4]);
-	if (argc == 6)
-		data->input.meal_num = ft_atoi(argv[5]);
-	else
-		data->input.meal_num = -1;
 }

@@ -6,7 +6,7 @@
 /*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:16:20 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/06 17:13:57 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/07 13:02:01 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,46 @@ typedef struct s_input
 
 typedef struct s_philo
 {	
-	int				id;
 	t_input			input;
-
+	pthread_t		thread_id;
+	int				id;
+	int				xate;
+	int				leftfirst;
+	unsigned long	lasttime;
+	unsigned long	starttime;
+	pthread_mutex_t	*leftfork;
+	pthread_mutex_t	*rightfork;
+	pthread_mutex_t	*print;
+	pthread_mutex_t	mutex;
 }	t_philo;
 
 typedef struct s_data
 {
 	int				num;
+	int				ifdead;
+	unsigned long	starttime;
 	t_input			input;
 	t_philo			*philos;
-	
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print;
 }	t_data;
 
 /*	fts_args.c */
 int 	ft_check_digit(int argc, char **argv);
 int		ft_check_args(int argc, char **argv);
 int		ft_check_value(int argc, char **argv);
-void	ft_data_init(int argc, char **argv, t_data *data);
 
 /*	fts_init.c */
 int		ft_philo_init(t_data *data, int argc, char **argv);
+int		ft_forks_init(t_data *data);
+void	ft_data_init(int argc, char **argv, t_data *data);
+void	ft_data_philo_init(int argc, char **argv, t_philo *philo);
+
+/*	fts_utils.c */
 int		free_philo(t_data *data);
+
+/*	fts_time.c */
+unsigned long	ft_gettime(void);
 
 /*	lib_1.c */
 int		ft_isdigit(int symb);
