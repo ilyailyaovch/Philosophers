@@ -6,7 +6,7 @@
 /*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 17:01:15 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/07 13:01:50 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/13 12:31:12 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,23 @@ int	ft_philo_init(t_data *data, int argc, char **argv)
 
 int	ft_forks_init(t_data *data)
 {
-	
-	
-	return (true);
+	int i;
+
+	i = 1;
+	data->forks = (pthread_mutex_t	*)malloc(sizeof(pthread_mutex_t) * data->num);
+	if (!data->forks)
+		return(false);
+	pthread_mutex_init(&data->forks[0], NULL);
+	data->philos[0].rightfork = &data->forks[0];
+	while (i < data->num)
+	{
+		pthread_mutex_init(&data->forks[i], NULL);
+		data->philos[i].rightfork = &data->forks[i];
+		data->philos[i].leftfork = &data->forks[i - 1];
+		i++;
+	}
+	data->philos[0].leftfork = &data->forks[i - 1];
+ 	return (true);
 }
 
 void	ft_data_init(int argc, char **argv, t_data *data)

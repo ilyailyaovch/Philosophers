@@ -6,7 +6,7 @@
 /*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:16:20 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/07 13:02:01 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/13 17:21:31 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,28 @@ void	ft_data_philo_init(int argc, char **argv, t_philo *philo);
 
 /*	fts_utils.c */
 int		free_philo(t_data *data);
+int		one_philo(t_data *data);
+
+/*	fts_utils2.c */
 
 /*	fts_time.c */
 unsigned long	ft_gettime(void);
+void			mysleep(unsigned long ms);
 
 /*	lib_1.c */
 int		ft_isdigit(int symb);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
+
+/*	fts_threads.c */
+void 	*routine(void *arg);
+int		ft_create_threads(t_data *data);
+
+/*	fts_routine.c */
+int 	ft_meals_done(t_philo *philo);
+void 	take_forks(t_philo *philo);
+int		go_eat(t_philo *philo);
+int		go_sleep(t_philo *philo);
+int		go_think(t_philo *philo);
 
 #endif
