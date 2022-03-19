@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fts_threads.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pleoma <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 13:04:15 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/13 17:24:32 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/14 19:33:28 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void *routine(void *arg)
 		if (!go_think(philo)) //not yet
 			break ;
 	}
+	return (NULL);
 }
 
 int	ft_create_threads(t_data *data)

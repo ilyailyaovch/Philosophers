@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pleoma <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:16:20 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/13 17:21:31 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/15 13:36:43 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 # define GREEN "\033[0;32m"
 # define YELW "\033[1;33m"
 # define WTH "\033[0;37m"
+
+# define EATING 77
+# define SLEEPING 78
+# define THINKING 79
+# define TAKEN_FORK 80
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -77,6 +82,7 @@ void	ft_data_philo_init(int argc, char **argv, t_philo *philo);
 /*	fts_utils.c */
 int		free_philo(t_data *data);
 int		one_philo(t_data *data);
+void	ft_print_philo(char *str, t_philo *philo);
 
 /*	fts_utils2.c */
 

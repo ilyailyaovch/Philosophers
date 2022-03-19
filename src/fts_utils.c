@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fts_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pleoma <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:16:19 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/13 17:04:08 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/15 13:32:45 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,15 @@ int	one_philo(t_data *data)
 	free_philo(data);
 	// pthread_mutex_destroy(&data->print); // ???
 	return(true);
+}
+
+void	ft_print_philo(char *str, t_philo *philo)
+{
+	unsigned int	now;
+
+	//Сделать условия и цвета!
+	now = ft_gettime() - philo->starttime;
+	pthread_mutex_lock(philo->print);
+	printf("%d %d %s\n", now, philo->id, str);
+	pthread_mutex_unlock(philo->print);
 }

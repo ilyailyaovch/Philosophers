@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pleoma <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:16:18 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/13 13:09:40 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/14 19:33:18 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int main(int argc, char **argv)
 
 	if (data.input.ph_num == 1)
 		return (one_philo(&data));
-	else
-	{
-		ft_create_threads(&data);
-		free_philo(&data);
-		//return (SUCCESS);
-	}
+	// else
+	// {
+	// 	ft_create_threads(&data);
+	// 	free_philo(&data);
+	// 	return (SUCCESS);
+	// }
 	
 	/*	TESTS */
 	printf("nice\n");
