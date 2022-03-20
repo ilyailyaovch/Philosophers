@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleoma <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:16:20 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/15 13:36:43 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/20 13:38:15 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
+# define BLUE "\033[0;34m"
 # define YELW "\033[1;33m"
 # define WTH "\033[0;37m"
 
-# define EATING 77
-# define SLEEPING 78
-# define THINKING 79
-# define TAKEN_FORK 80
+# define EATING "is eating"
+# define SLEEPING "is sleeping"
+# define THINKING "is thinking"
+# define TAKEN_FORK "has taken fork"
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -69,41 +70,46 @@ typedef struct s_data
 }	t_data;
 
 /*	fts_args.c */
-int 	ft_check_digit(int argc, char **argv);
-int		ft_check_args(int argc, char **argv);
-int		ft_check_value(int argc, char **argv);
+int				ft_check_digit(int argc, char **argv);
+int				ft_check_args(int argc, char **argv);
+int				ft_check_value(int argc, char **argv);
 
 /*	fts_init.c */
-int		ft_philo_init(t_data *data, int argc, char **argv);
-int		ft_forks_init(t_data *data);
-void	ft_data_init(int argc, char **argv, t_data *data);
-void	ft_data_philo_init(int argc, char **argv, t_philo *philo);
+int				ft_philo_init(t_data *data, int argc, char **argv);
+int				ft_forks_init(t_data *data);
+void			ft_data_init(int argc, char **argv, t_data *data);
+void			ft_data_philo_init(int argc, char **argv, t_philo *philo);
 
 /*	fts_utils.c */
-int		free_philo(t_data *data);
-int		one_philo(t_data *data);
-void	ft_print_philo(char *str, t_philo *philo);
-
-/*	fts_utils2.c */
+int				free_philo(t_data *data);
+int				one_philo(t_data *data);
+void			ft_print_philo(char *str, t_philo *philo);
 
 /*	fts_time.c */
 unsigned long	ft_gettime(void);
 void			mysleep(unsigned long ms);
 
 /*	lib_1.c */
-int		ft_isdigit(int symb);
-int		ft_strlen(char *str);
-int		ft_atoi(const char *str);
+int				ft_isdigit(int symb);
+int				ft_strlen(char *str);
+int				ft_atoi(const char *str);
 
 /*	fts_threads.c */
-void 	*routine(void *arg);
-int		ft_create_threads(t_data *data);
+void			*routine(void *arg);
+int				ft_create_threads(t_data *data);
 
 /*	fts_routine.c */
-int 	ft_meals_done(t_philo *philo);
-void 	take_forks(t_philo *philo);
-int		go_eat(t_philo *philo);
-int		go_sleep(t_philo *philo);
-int		go_think(t_philo *philo);
+int				ft_meals_done(t_philo *philo);
+void			take_forks(t_philo *philo);
+int				go_eat(t_philo *philo);
+int				go_sleep(t_philo *philo);
+int				go_think(t_philo *philo);
+
+/*	fts_death.c */
+int				detach_threads(t_data *data);
+int				join_threads(t_data *data);
+int				isdead(t_philo *philo);
+int				manage_meals(t_data *data, int i);
+void			ft_check_death(t_data *data);
 
 #endif

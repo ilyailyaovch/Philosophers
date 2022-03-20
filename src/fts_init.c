@@ -6,7 +6,7 @@
 /*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 17:01:15 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/13 12:31:12 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/20 13:30:40 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_philo_init(t_data *data, int argc, char **argv)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	data->starttime = ft_gettime();
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->num);
 	if (!data->philos)
-		return(false);
+		return (false);
 	while (count < data->num)
 	{
 		data->philos[count].id = count + 1;
@@ -37,12 +37,13 @@ int	ft_philo_init(t_data *data, int argc, char **argv)
 
 int	ft_forks_init(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	data->forks = (pthread_mutex_t	*)malloc(sizeof(pthread_mutex_t) * data->num);
+	data->forks = (pthread_mutex_t *)
+		malloc(sizeof(pthread_mutex_t) * data->num);
 	if (!data->forks)
-		return(false);
+		return (false);
 	pthread_mutex_init(&data->forks[0], NULL);
 	data->philos[0].rightfork = &data->forks[0];
 	while (i < data->num)
@@ -53,7 +54,7 @@ int	ft_forks_init(t_data *data)
 		i++;
 	}
 	data->philos[0].leftfork = &data->forks[i - 1];
- 	return (true);
+	return (true);
 }
 
 void	ft_data_init(int argc, char **argv, t_data *data)

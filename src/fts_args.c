@@ -6,16 +6,16 @@
 /*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:02:14 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/07 10:57:42 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/20 14:08:33 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int ft_check_digit(int argc, char **argv)
+int	ft_check_digit(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < argc)
@@ -36,12 +36,11 @@ int ft_check_digit(int argc, char **argv)
 
 int	ft_check_value(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
-		//
 		if (ft_atoi(argv[i]) <= 0)
 			return (false);
 		i++;
@@ -51,14 +50,11 @@ int	ft_check_value(int argc, char **argv)
 
 int	ft_check_args(int argc, char **argv)
 {
-	if (argc !=5 && argc !=6)
-		return(printf(RED"Wrong number of args\n"WTH) && false);
-
+	if (argc != 5 && argc != 6)
+		return (printf(RED"Wrong number of args\n"WTH) && false);
 	if (!ft_check_digit(argc, argv))
-		return(printf(RED"Invalid input data\n"WTH) && false);
-		
+		return (printf(RED"Invalid input data\n"WTH) && false);
 	if (!ft_check_value(argc, argv))
-		return(printf(RED"Wrong input data\n"WTH) && false);
-		
+		return (printf(RED"Wrong input data\n"WTH) && false);
 	return (true);
 }

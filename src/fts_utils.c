@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fts_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleoma <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:16:19 by pleoma            #+#    #+#             */
-/*   Updated: 2022/03/15 13:32:45 by pleoma           ###   ########.fr       */
+/*   Updated: 2022/03/20 15:42:24 by pleoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,36 @@ int	free_philo(t_data *data)
 
 int	one_philo(t_data *data)
 {
-	// if (pthread_mutex_init(&data->print, NULL) != 0)
-	// {
-	// 	free_philo(data);
-	// 	return (false);
-	// }
+	if (pthread_mutex_init(&data->print, NULL) != 0)
+	{
+		free_philo(data);
+		return (false);
+	}
 	printf("%lu %d has taken a fork\n", ft_gettime() - data->starttime,
 		data->philos->id);
 	mysleep(data->philos->input.die_time);
 	printf(RED"%lu %d died\n"WTH, ft_gettime() - data->starttime,
 		data->philos->id);
 	free_philo(data);
-	// pthread_mutex_destroy(&data->print); // ???
-	return(true);
+	pthread_mutex_destroy(&data->print);
+	return (true);
 }
 
 void	ft_print_philo(char *str, t_philo *philo)
 {
 	unsigned int	now;
 
-	//Сделать условия и цвета!
 	now = ft_gettime() - philo->starttime;
 	pthread_mutex_lock(philo->print);
-	printf("%d %d %s\n", now, philo->id, str);
+	if (str == EATING)
+		printf(GREEN"%d %d %s\n"WTH, now, philo->id, str);
+	if (str == SLEEPING)
+		printf(BLUE"%d %d %s\n"WTH, now, philo->id, str);
+	if (str == THINKING)
+		printf(YELW"%d %d %s\n"WTH, now, philo->id, str);
+	if (str == TAKEN_FORK)
+		printf(WTH"%d %d %s\n"WTH, now, philo->id, str);
+	if (*str == 'd')
+		printf(WTH"%d %d %s\n"WTH, now, philo->id, str);
 	pthread_mutex_unlock(philo->print);
 }

@@ -6,7 +6,7 @@
 #    By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/27 14:14:46 by pleoma            #+#    #+#              #
-#    Updated: 2022/03/13 16:59:50 by pleoma           ###   ########.fr        #
+#    Updated: 2022/03/20 14:05:41 by pleoma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ SRC	=	src/philo.c\
 		src/fts_args.c\
 		src/fts_init.c\
 		src/fts_utils.c\
-		src/fts_utils2.c\
 		src/fts_time.c\
 		src/fts_threads.c\
 		src/fts_routine.c\
+		src/fts_death.c\
 		src/lib_1.c\
 		
 
@@ -35,7 +35,7 @@ SRC	=	src/philo.c\
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(FLAGS)  $(OBJ) -o $@
+	@$(CC) $(FLAGS) $(OBJ) -o $@
 	@echo "compiled $@"
 
 clean :
