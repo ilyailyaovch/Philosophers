@@ -6,7 +6,7 @@
 #    By: pleoma <pleoma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/27 14:14:46 by pleoma            #+#    #+#              #
-#    Updated: 2022/03/21 13:16:21 by pleoma           ###   ########.fr        #
+#    Updated: 2022/03/21 13:17:58 by pleoma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-
+FLAGS_O	= -O2
 HEADER = includes/philo.h
 OBJ = 	$(patsubst %.c,%.o,$(SRC))
 SRC	=	src/philo.c\
